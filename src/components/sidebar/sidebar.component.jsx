@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 
+import SubBracketCollection from '../sub-bracket-collection/sub-bracket-collection.component';
+
 import './sidebar.styles.scss';
 
 class SideBar extends React.Component {
@@ -21,79 +23,27 @@ class SideBar extends React.Component {
   }
 
   render() {
+    const blogCollection = this.props.blogCollection;
     return (
       <div className='side-bar-container'>
-        <div 
-        className={`sidebar sticky-sidebar ${this.state.isBtnOpen ? 'l-toggle-on':'l-toggle-off'}`} >
+        <div className={`sidebar sticky-sidebar ${this.state.isBtnOpen ? 'l-toggle-on':'l-toggle-off'}`} >
           <div className='flex-mb-500'>
             <div className='button-shadow'>BLOG</div>
-            <div className="sub-bracket-collection">
-              <div className='button-table-of-content parent-table-of-content'>
-                  <span className='text-table-of-content'>SEMINAR &amp; WORKSHOP</span>
-              </div>
-              <div className='collection-item'>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-              </div>
-            </div>
-          
-            <div className="sub-bracket-collection">
-              <div className='button-table-of-content parent-table-of-content'>
-                  <span className='text-table-of-content'>SEMINAR &amp; WORKSHOP</span>
-              </div>
-              <div className='collection-item'>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-              </div>
-            </div>
-          
-            <div className="sub-bracket-collection">
-              <div className='button-table-of-content parent-table-of-content'>
-                  <span className='text-table-of-content'>SEMINAR &amp; WORKSHOP</span>
-              </div>
-              <div className='collection-item'>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-                <a href='#' className='button-table-of-content item-table-of-content'>
-                  <span className='text-table-of-content'>Webinar E-Learning &amp; IOT Platform Batch 2</span>
-                </a>
-              </div>
-            </div>
-          
+              {blogCollection ? (
+                Object.keys(blogCollection).map((key) => (
+                  <SubBracketCollection key={key} subBracketTitle={key} items={blogCollection[key]} />
+                ))
+              ) : (
+                null
+              )}
           </div>
         </div>
         <div 
           className={`openbtn sticky-openbtn ${this.state.isBtnOpen ? 'ml-toggle-on':'ml-toggle-off'}`} 
           id='buttonSlider-js' 
-          onClick={() => this.toggleSidebarOpenbtn()}>
-            <span>{this.state.isBtnOpen ? '<':'>'}</span>
+          onClick={() => this.toggleSidebarOpenbtn()}
+        >
+          <span>{this.state.isBtnOpen ? '<':'>'}</span>
         </div>
       </div>
     );

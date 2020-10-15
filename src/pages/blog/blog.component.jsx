@@ -1,5 +1,10 @@
 import React from 'react';
 
+//Load components
+import SideBar from '../../components/sidebar/sidebar.component';
+import HeroTitle from '../../components/hero-title/hero-title.component';
+
+//Load services
 import MapidService from '../../services/mapid-service';
 
 class BlogPage extends React.Component {
@@ -28,7 +33,9 @@ class BlogPage extends React.Component {
   render() {
     return (
       <div className='blog-page'>
-        {console.log(this.state.blogData)}
+        <SideBar blogCollection={this.state.blogData} />
+        <HeroTitle/>
+        
       </div>
     );
   }
