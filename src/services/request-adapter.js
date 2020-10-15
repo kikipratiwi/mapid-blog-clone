@@ -1,37 +1,27 @@
 import axios from 'axios';
 
-// Default API will be 3000 default host
-const API_ROOT = 'http://localhost:3000';
-const TIMEOUT = 20000;
-const HEADERS = {
-  'Content-Type': 'application/json',
-  Accept: 'application/json',
-};
+import appConfig from "./config";
 
-class RequestAdapter {
-  constructor({ baseURL = API_ROOT, timeout = TIMEOUT, headers = HEADERS }) {
-    const client = axios.create({
-      baseURL,
-      timeout,
-      headers,
-    });
+export default class RequestAdapter {
+  constructor() {
+    this.baseUrl = appConfig.API_URL;
+    let headers = {
+      'Content-Type': 'application/json',
+    };
 
-    client.interceptors.response.use(this.handleSuccess, this.handleError);
-    this.client = client;
+    this.reqClient = axios.create({ headers });
+    this.reqClient.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        if (error.response) {
+          console.error(error)
+        }
+        throw error;
+      }
+    );
   }
 
-  handleSuccess(response) {
-    return response;
+  sendGetRequest(URL, params) {
+    return this.reqClient.get(URL, { params });
   }
-
-  handleError(error) {
-    return Promise.reject(error);
-  }
-
-  get(path) {
-    return this.client.get(path).then(response => response.data);
-  }
-  
 }
-
-export default RequestAdapter;
