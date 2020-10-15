@@ -1,0 +1,30 @@
+.mb-soo {
+  margin-bottom: 200px;
+}
+
+.hero-title-container {
+  display: block;
+  min-height: 500px;
+  position: relative;
+  background-color: #0575e6;
+  background-image: -webkit-gradient(linear,left top,left bottom,from(hsla(0,0%,100%,.08)),color-stop(hsla(0,0%,100%,.08)),color-stop(hsla(0,0%,100%,.08)),color-stop(hsla(0,0%,100%,.73)),to(#fff)),-webkit-gradient(linear,left bottom,left top,from(#00f260),to(#0575e6));
+  background-image: linear-gradient(hsla(0,0%,100%,.08),hsla(0,0%,100%,.08),hsla(0,0%,100%,.08),hsla(0,0%,100%,.73),#fff),linear-gradient(0deg,#00f260,#0575e6);
+  
+  .dashboard-special {
+    padding-right: 100px;
+    padding-left: 100px;
+    
+    .title-document {
+      font-weight: bolder;
+      color: #000;
+      line-height: 110%;
+      position: absolute;
+      top: 70%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      font-size: 65px;
+    }
+
+  }
+
+}
