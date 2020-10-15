@@ -8,11 +8,19 @@ export default class MapidService extends RequestAdapter {
         {}
       );
 
-      const groupBy = 'sub_bracket';
-      const map = new Map(Array.from(data, obj => [obj[groupBy], []]));
-      data.forEach(obj => map.get(obj[groupBy]).push(obj));
+      //Group blog data by sub_bracket
+      const convertedData = {}
+      data.forEach((data) => {
+        if (!convertedData[data.sub_bracket]) {
+          convertedData[data.sub_bracket] = {};
+        }
 
-      return Array.from(map.values());
+        if (!convertedData[data.sub_bracket][data._id]) {
+          convertedData[data.sub_bracket][data._id] = data;
+        }
+      });
+
+      return convertedData;
       
     } catch (error) {
       throw new Error(`Get blog data: ${error.response.data.message}`);
