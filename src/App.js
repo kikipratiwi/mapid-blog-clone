@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import './App.css';
 
@@ -8,7 +8,10 @@ import BlogPage from './pages/blog/blog.component';
 function App() {
   return (
     <div className="App">
-      <Route path='/blog/:blogLink' component={BlogPage} />
+      <Switch>
+        <Route path='/' component={BlogPage} />
+        <Route path='/:blogLink' component={BlogPage} />
+      </Switch>
     </div>
   );
 }

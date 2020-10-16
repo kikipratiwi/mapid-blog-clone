@@ -9,7 +9,9 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {}
+    this.state = {
+      defaultUserImageProfile: 'https://doc.mapid.io/static/media/profile_pic_comment.2a6f2a32.svg'
+    }
   }
 
   render() {
@@ -23,8 +25,12 @@ class Content extends React.Component {
           {this.props.contentData ? (
             <>
               <Author 
-                imageUrl={contentData['authors']['0']['user']['profile_picture'].url_compressed} 
-                name={contentData['authors']['0']['user'].full_name} 
+                imageUrl={contentData['authors']['0']['user'] ? (
+                    contentData['authors']['0']['user']['profile_picture'].url
+                  ) : (
+                    this.state.defaultUserImageProfile
+                  )} 
+                name={contentData['authors']['0']['user'] ? contentData['authors']['0']['user'].full_name : ''} 
                 date={contentData.date}
               />
               <div className="content">

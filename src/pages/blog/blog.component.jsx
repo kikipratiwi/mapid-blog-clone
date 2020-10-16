@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -30,8 +30,9 @@ class BlogPage extends React.Component {
   async getBlogData() {
     try {
       const result = await this.mapidService.getBlogData();
-      const defaultData = result[Object.keys(result)[0]];
-      
+      const _defaultData = result[Object.keys(result)[0]];
+      const defaultData =  _defaultData[Object.keys(_defaultData)[0]];
+
       this.setState({ 
         blogData: result,
         defaultContent: defaultData
@@ -41,24 +42,20 @@ class BlogPage extends React.Component {
     }
   }
 
-  setContent(data) {
-    console.log(data);
-    this.setState({ ...this.state, defaultContent: data });
-    this.props.location.pathname = this.state.defaultContent.link
-  }
-
   render() {
     return (
       <div className='blog-page'>
-        {console.log(this.props.currentBlog)}
+        
         <SideBar blogCollection={this.state.blogData} />
         {this.state.blogData ? (
-          <Route 
-            path='/blog/:blogLink' 
-            render={(props) => (
-              <Content {...props} contentData={this.props.currentBlog ? this.props.currentBlog : this.state.defaultContent} />
-            )}
-          />
+          <Switch>
+            <Route 
+              path='/' 
+              render={(props) => (
+                <Content {...props} contentData={this.props.currentBlog ? this.props.currentBlog : this.state.defaultContent} />
+              )}
+            />
+          </Switch>
         ) : (
           null
         )}

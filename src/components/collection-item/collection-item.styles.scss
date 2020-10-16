@@ -5,3 +5,19 @@
   }
   
 }
+
+div {
+  &.item-table-of-content {
+    #activated {
+      color: #2196f3;
+    }
+
+    &#not-activated {
+      color: #565656;
+    }
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

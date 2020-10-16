@@ -6,7 +6,8 @@ import blogReducer from './blog/blog.reducer';
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  whitelist: ['blog']
 }
 
 const rootReducer = combineReducers({

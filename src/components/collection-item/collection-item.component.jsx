@@ -8,13 +8,13 @@ import './collection-item.styles.scss';
 
 const CollectionItem = ({ item, setCurrentBlog }) => (
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    <a 
+    <div 
       href={'#'}
       className='button-table-of-content item-table-of-content'
       onClick={() => setCurrentBlog(item)}
     >
       <span className='text-table-of-content'>{item.title}</span>
-    </a>
+    </div>
 );
 
 const mapDispatchToProps = dispatch => ({
