@@ -2,7 +2,7 @@ import React from 'react';
 
 //Load components
 import SideBar from '../../components/sidebar/sidebar.component';
-import HeroTitle from '../../components/hero-title/hero-title.component';
+import Content from '../../components/content/content.component';
 
 //Load services
 import MapidService from '../../services/mapid-service';
@@ -13,7 +13,8 @@ class BlogPage extends React.Component {
 
     this.mapidService = new MapidService();
     this.state = {
-      blogData: null
+      blogData: null, 
+      defaultContent: null
     };
   }
 
@@ -24,7 +25,7 @@ class BlogPage extends React.Component {
   async getBlogData() {
     try {
       const result = await this.mapidService.getBlogData();
-      this.setState({blogData: result});
+      this.setState({ blogData: result });
     } catch (error) {
       console.error(error);
     }
@@ -34,8 +35,11 @@ class BlogPage extends React.Component {
     return (
       <div className='blog-page'>
         <SideBar blogCollection={this.state.blogData} />
-        <HeroTitle/>
-        
+        {this.state.blogData ? (
+          <Content contentData={this.state.blogData['teknis_kompetisi_mapid']['5f73de7298e0814830293cc6']} />
+        ) : (
+          null
+        )}
       </div>
     );
   }
