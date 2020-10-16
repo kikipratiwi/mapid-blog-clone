@@ -3,11 +3,11 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+import { selectCurrentBlog } from '../../redux/blog/blog.selectors'
+
 //Load components
 import SideBar from '../../components/sidebar/sidebar.component';
 import Content from '../../components/content/content.component';
-
-import { selectCurrentBlog } from '../../redux/blog/blog.selectors'
 
 //Load services
 import MapidService from '../../services/mapid-service';

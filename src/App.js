@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <Switch>
         <Route path='/' component={BlogPage} />
-        <Route path='/:blogLink' component={BlogPage} />
       </Switch>
     </div>
   );

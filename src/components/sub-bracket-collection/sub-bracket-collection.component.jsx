@@ -15,7 +15,8 @@ const SubBracketCollection = ({ subBracketTitle, items }) => (
       {Object.keys(items)
         .map((_id) => (
           <CollectionItem key={_id} item={items[_id]} />
-        ))}
+        )
+      )}
     </div>
   </div>
 );
