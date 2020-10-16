@@ -8,7 +8,6 @@ const SubBracketCollection = ({ subBracketTitle, items }) => (
   <div className='sub-bracket-collection'>
     <div className='button-table-of-content parent-table-of-content'>
       <span className='text-table-of-content'>
-        {console.log(subBracketTitle)}
         {renderTitle(subBracketTitle)}
       </span>
     </div>

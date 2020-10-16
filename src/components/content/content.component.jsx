@@ -13,6 +13,7 @@ class Content extends React.Component {
   }
 
   render() {
+    const contentData = this.props.contentData[Object.keys(this.props.contentData)[0]];
     return (
       <div className="mb-200">
         <HeroTitle 
@@ -20,16 +21,19 @@ class Content extends React.Component {
           title={this.props.contentData.title} />
         <div className="content-container">
           {this.props.contentData ? (
-            <Author 
-              imageUrl={this.props.contentData['authors']['0']['user']['profile_picture'].url_compressed} 
-              name={this.props.contentData['authors']['0']['user'].full_name} 
-              date={this.props.contentData.date} />
+            <>
+              <Author 
+                imageUrl={contentData['authors']['0']['user']['profile_picture'].url_compressed} 
+                name={contentData['authors']['0']['user'].full_name} 
+                date={contentData.date}
+              />
+              <div className="content">
+                <p>{contentData.editorState}</p>
+              </div>
+            </>
           ) : (
             null
           )}
-          <div className="content">
-            <p>{this.props.contentData.editorState}</p>
-          </div>
         </div>
       </div>
     );

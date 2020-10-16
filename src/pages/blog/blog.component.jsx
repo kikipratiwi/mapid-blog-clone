@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
 //Load components
 import SideBar from '../../components/sidebar/sidebar.component';
@@ -25,18 +26,35 @@ class BlogPage extends React.Component {
   async getBlogData() {
     try {
       const result = await this.mapidService.getBlogData();
-      this.setState({ blogData: result });
+      const defaultData = result[Object.keys(result)[0]];
+      
+      this.setState({ 
+        blogData: result,
+        defaultContent: defaultData
+      });
     } catch (error) {
       console.error(error);
     }
   }
 
+  setContent(data) {
+    console.log(data);
+    this.setState({ ...this.state, defaultContent: data });
+    this.props.location.pathname = this.state.defaultContent.link
+  }
+
   render() {
     return (
       <div className='blog-page'>
-        <SideBar blogCollection={this.state.blogData} />
+        {console.log(this.props)}
+        <SideBar blogCollection={this.state.blogData} setContent={this.setContent} />
         {this.state.blogData ? (
-          <Content contentData={this.state.blogData['teknis_kompetisi_mapid']['5f73de7298e0814830293cc6']} />
+          <Route 
+            path='/blog/:blogLink' 
+            render={(props) => (
+              <Content {...props} contentData={this.state.defaultContent} />
+            )}
+          />
         ) : (
           null
         )}
