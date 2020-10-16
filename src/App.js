@@ -1,4 +1,6 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+
 import './App.css';
 
 import BlogPage from './pages/blog/blog.component';
@@ -6,7 +8,9 @@ import BlogPage from './pages/blog/blog.component';
 function App() {
   return (
     <div className="App">
-      <BlogPage/>
+      <Switch>
+        <Route path='/' component={BlogPage} />
+      </Switch>
     </div>
   );
 }

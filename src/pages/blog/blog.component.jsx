@@ -1,4 +1,9 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectCurrentBlog } from '../../redux/blog/blog.selectors'
 
 //Load components
 import SideBar from '../../components/sidebar/sidebar.component';
@@ -20,23 +25,42 @@ class BlogPage extends React.Component {
 
   async componentDidMount () {
     await this.getBlogData();
+    this.initDefaultStyle();
   }
 
   async getBlogData() {
     try {
       const result = await this.mapidService.getBlogData();
-      this.setState({ blogData: result });
+      const _defaultData = result[Object.keys(result)[0]];
+      const defaultData =  _defaultData[Object.keys(_defaultData)[0]];
+
+      this.setState({ 
+        blogData: result,
+        defaultContent: defaultData
+      });
+
     } catch (error) {
       console.error(error);
     }
   }
+
+initDefaultStyle() {
+  document.title = this.state.defaultContent.title;
+}
 
   render() {
     return (
       <div className='blog-page'>
         <SideBar blogCollection={this.state.blogData} />
         {this.state.blogData ? (
-          <Content contentData={this.state.blogData['teknis_kompetisi_mapid']['5f73de7298e0814830293cc6']} />
+          <Switch>
+            <Route 
+              path='/' 
+              render={(props) => (
+                <Content {...props} contentData={this.props.currentBlog ? this.props.currentBlog : this.state.defaultContent} />
+              )}
+            />
+          </Switch>
         ) : (
           null
         )}
@@ -45,4 +69,8 @@ class BlogPage extends React.Component {
   }
 }
 
-export default BlogPage;
+const mapStateToProps = createStructuredSelector ({
+  currentBlog: selectCurrentBlog
+})
+
+export default connect(mapStateToProps)(BlogPage);

@@ -15,17 +15,3 @@ body {
   margin: 0;
   text-align: left;
 }
-
-a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-
-  &#not-activated {
-    color: #565656;
-  }
-
-  &:hover {
-    text-decoration: underline;
-  }
-}

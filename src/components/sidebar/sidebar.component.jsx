@@ -58,7 +58,12 @@ class SideBar extends React.Component {
             <div className='button-shadow'>BLOG</div>
               {blogCollection ? (
                 Object.keys(blogCollection).map((key) => (
-                  <SubBracketCollection key={key} subBracketTitle={key} items={blogCollection[key]} />
+                  <SubBracketCollection 
+                    key={key} 
+                    subBracketTitle={key} 
+                    items={blogCollection[key]} 
+                    onClick={() => this.props.setContent(blogCollection[key])}
+                  />
                 ))
               ) : (
                 null
