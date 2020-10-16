@@ -1,0 +1,24 @@
+.button-table-of-content {
+  text-align: left;
+  display: block;
+  overflow-x: hidden;
+  border-radius: .5rem .5rem .5rem .5rem;
+  background-color: #fff;
+  color: #565656;
+  padding: 10px 10px 8px;
+  font-size: 14px;
+  width: 250px;
+
+  &.parent-table-of-content {
+    background-color: #2196f3;
+    overflow-x: visible;
+    color: #fff;
+    margin-top: 20px;
+  }
+
+  .text-table-of-content {
+    line-height: 12.5pt;
+    letter-spacing: .025em;
+  }
+
+}

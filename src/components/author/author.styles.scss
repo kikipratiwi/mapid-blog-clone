@@ -1,0 +1,30 @@
+.author-profile-image {
+  background-color: rgba(0, 0, 0, 0);
+  background-color: #dcdcdc;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  border: 2px solid #b0b0b0;
+  box-shadow: 0 0 12px #0000004e;
+  -webkit-box-shadow: 0 0 12px #0000004e;
+  -moz-box-shadow: 0 0 12px #0000004e;
+}
+
+.date {
+  font-size: 12px; 
+  color: black;
+}
+
+.profile-detail {
+  display: inline-block; 
+  vertical-align: middle; 
+  margin-left: 10px; 
+  font-size: 17px; 
+  color: black
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
