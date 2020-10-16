@@ -25,6 +25,7 @@ class BlogPage extends React.Component {
 
   async componentDidMount () {
     await this.getBlogData();
+    this.initDefaultStyle();
   }
 
   async getBlogData() {
@@ -37,15 +38,19 @@ class BlogPage extends React.Component {
         blogData: result,
         defaultContent: defaultData
       });
+
     } catch (error) {
       console.error(error);
     }
   }
 
+initDefaultStyle() {
+  document.title = this.state.defaultContent.title;
+}
+
   render() {
     return (
       <div className='blog-page'>
-        
         <SideBar blogCollection={this.state.blogData} />
         {this.state.blogData ? (
           <Switch>

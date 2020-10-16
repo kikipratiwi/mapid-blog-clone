@@ -11,9 +11,9 @@ import './index.scss';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter basename='/blog'>
+    <BrowserRouter>
       <App />
-    </BrowserRouter>,
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );

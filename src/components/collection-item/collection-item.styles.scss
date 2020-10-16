@@ -6,18 +6,8 @@
   
 }
 
-div {
-  &.item-table-of-content {
-    #activated {
-      color: #2196f3;
-    }
-
-    &#not-activated {
-      color: #565656;
-    }
-  
-    &:hover {
-      text-decoration: underline;
-    }
+.item-table-of-content {
+  span.activated {
+    color: #2196f3;
   }
 }
