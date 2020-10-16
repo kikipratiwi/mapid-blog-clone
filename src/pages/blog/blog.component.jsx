@@ -1,9 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 //Load components
 import SideBar from '../../components/sidebar/sidebar.component';
 import Content from '../../components/content/content.component';
+
+import { selectCurrentBlog } from '../../redux/blog/blog.selectors'
 
 //Load services
 import MapidService from '../../services/mapid-service';
@@ -46,13 +50,13 @@ class BlogPage extends React.Component {
   render() {
     return (
       <div className='blog-page'>
-        {console.log(this.props)}
-        <SideBar blogCollection={this.state.blogData} setContent={this.setContent} />
+        {console.log(this.props.currentBlog)}
+        <SideBar blogCollection={this.state.blogData} />
         {this.state.blogData ? (
           <Route 
             path='/blog/:blogLink' 
             render={(props) => (
-              <Content {...props} contentData={this.state.defaultContent} />
+              <Content {...props} contentData={this.props.currentBlog ? this.props.currentBlog : this.state.defaultContent} />
             )}
           />
         ) : (
@@ -63,4 +67,8 @@ class BlogPage extends React.Component {
   }
 }
 
-export default BlogPage;
+const mapStateToProps = createStructuredSelector ({
+  currentBlog: selectCurrentBlog
+})
+
+export default connect(mapStateToProps)(BlogPage);

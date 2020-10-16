@@ -13,7 +13,7 @@ class Content extends React.Component {
   }
 
   render() {
-    const contentData = this.props.contentData[Object.keys(this.props.contentData)[0]];
+    const contentData = this.props.contentData;
     return (
       <div className="mb-200">
         <HeroTitle 

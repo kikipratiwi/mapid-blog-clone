@@ -1,14 +1,27 @@
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { setCurrentBlog } from '../../redux/blog/blog.actions'
 
 import './collection-item.styles.scss';
 
-const CollectionItem = ({ _id, title, link }) => (
-    <div 
+const CollectionItem = ({ item, setCurrentBlog }) => (
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+    <a 
+      href={'#'}
       className='button-table-of-content item-table-of-content'
+      onClick={() => setCurrentBlog(item)}
     >
-      <span className='text-table-of-content'>{title}</span>
-    </div>
+      <span className='text-table-of-content'>{item.title}</span>
+    </a>
 );
 
-export default CollectionItem;
+const mapDispatchToProps = dispatch => ({
+  setCurrentBlog: item => dispatch(setCurrentBlog(item))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CollectionItem);
