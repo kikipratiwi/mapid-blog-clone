@@ -15,7 +15,7 @@ export default class MapidService extends RequestAdapter {
           convertedData[data.sub_bracket] = {};
         }
 
-        if (!convertedData[data.sub_bracket][data._id]) {
+        if (!convertedData[data.sub_bracket][data._id] && data.isPublish) {
           convertedData[data.sub_bracket][data._id] = data;
         }
       });
