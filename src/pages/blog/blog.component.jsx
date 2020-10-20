@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectCurrentBlog } from '../../redux/blog/blog.selectors'
+import { selectDefaultBlog, selectBlogData, selectCurrentBlog } from '../../redux/blog/blog.selectors'
+import { setBlogData, setDefaultBlog, setCurrentBlog } from '../../redux/blog/blog.actions'
 
 //Load components
 import SideBar from '../../components/sidebar/sidebar.component';
@@ -11,16 +11,11 @@ import Content from '../../components/content/content.component';
 
 //Load services
 import MapidService from '../../services/mapid-service';
-
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.mapidService = new MapidService();
-    this.state = {
-      blogData: null, 
-      defaultContent: null
-    };
   }
 
   async componentDidMount () {
@@ -34,10 +29,9 @@ class BlogPage extends React.Component {
       const _defaultData = result[Object.keys(result)[0]];
       const defaultData =  _defaultData[Object.keys(_defaultData)[0]];
 
-      this.setState({ 
-        blogData: result,
-        defaultContent: defaultData
-      });
+      await this.props.setBlogData(result);
+      await this.props.setDefaultBlog(defaultData);
+      await this.props.setCurrentBlog(defaultData);
 
     } catch (error) {
       console.error(error);
@@ -45,32 +39,33 @@ class BlogPage extends React.Component {
   }
 
 initDefaultStyle() {
-  document.title = this.state.defaultContent.title;
+  if (this.props.defaultBlog)
+    document.title = this.props.defaultBlog.title;
 }
 
   render() {
     return (
       <div className='blog-page'>
-        <SideBar blogCollection={this.state.blogData} />
-        {this.state.blogData ? (
-          <Switch>
-            <Route 
-              path='/' 
-              render={(props) => (
-                <Content {...props} contentData={this.props.currentBlog ? this.props.currentBlog : this.state.defaultContent} />
-              )}
-            />
-          </Switch>
-        ) : (
-          null
-        )}
+        {this.props.currentBlog ? <SideBar blogCollection={this.props.blogData} /> : null }
+        {this.props.blogData ? <Content /> : null }
       </div>
     );
   }
 }
 
 const mapStateToProps = createStructuredSelector ({
+  blogData: selectBlogData,
+  defaultBlog: selectDefaultBlog,
   currentBlog: selectCurrentBlog
 })
 
-export default connect(mapStateToProps)(BlogPage);
+const mapDispatchToProps = dispatch => ({
+  setBlogData: item => dispatch(setBlogData(item)),
+  setDefaultBlog: item => dispatch(setDefaultBlog(item)),
+  setCurrentBlog: item => dispatch(setCurrentBlog(item))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BlogPage);

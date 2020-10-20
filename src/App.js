@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
 
@@ -9,7 +9,17 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path='/' component={BlogPage} />
+        <Route 
+          exact
+          path='/' 
+          render={() => {
+            return (
+              <Redirect to="/blog" />
+            )
+          }}
+        />
+        <Route path='/blog' component={BlogPage} />
+        <Route exact path='/blog/:blogLink' children={BlogPage} />
       </Switch>
     </div>
   );
