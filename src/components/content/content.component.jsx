@@ -49,28 +49,25 @@ const Content = ({ defaultBlog, currentBlog, ...props }) => {
   }
 
   let { blogLink } = useParams();
-
-  console.log("blog:"+blogLink)
-  console.log(useParams())
-
-  const editorState = convertToEditorState(currentBlog);
+  const content = blogLink ? currentBlog : defaultBlog;
+  const editorState = convertToEditorState(content);
 
   return (
     <div className="mb-200">
       <HeroTitle 
         imageUrl={defaultData.defaultHeroImage} 
-        title={currentBlog.title} />
+        title={content.title} />
       <div className="content-container">
-        {currentBlog ? (
+        {content ? (
           <>
             <Author 
-              imageUrl={currentBlog['authors']['0']['user'] ? (
-                  currentBlog['authors']['0']['user']['profile_picture'].url
+              imageUrl={content['authors']['0']['user'] ? (
+                  content['authors']['0']['user']['profile_picture'].url
                 ) : (
                   defaultData.defaultUserImageProfile
                 )} 
-              name={currentBlog['authors']['0']['user'] ? currentBlog['authors']['0']['user'].full_name : ''} 
-              date={currentBlog.date}
+              name={content['authors']['0']['user'] ? content['authors']['0']['user'].full_name : ''} 
+              date={content.date}
             />
             <div className="content">
               <Editor editorState={editorState} readOnly={true} />
@@ -83,7 +80,6 @@ const Content = ({ defaultBlog, currentBlog, ...props }) => {
     </div>
   );
 }
-
 const mapStateToProps = createStructuredSelector ({
   currentBlog: selectCurrentBlog,
   defaultBlog: selectDefaultBlog
