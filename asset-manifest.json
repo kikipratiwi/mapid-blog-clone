@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/mapid-blog-clone/static/css/main.8be22ab2.chunk.css",
-    "main.js": "/mapid-blog-clone/static/js/main.3d9c604a.chunk.js",
-    "main.js.map": "/mapid-blog-clone/static/js/main.3d9c604a.chunk.js.map",
+    "main.js": "/mapid-blog-clone/static/js/main.65b812f5.chunk.js",
+    "main.js.map": "/mapid-blog-clone/static/js/main.65b812f5.chunk.js.map",
     "runtime-main.js": "/mapid-blog-clone/static/js/runtime-main.47933d2f.js",
     "runtime-main.js.map": "/mapid-blog-clone/static/js/runtime-main.47933d2f.js.map",
     "static/js/2.a4d464bb.chunk.js": "/mapid-blog-clone/static/js/2.a4d464bb.chunk.js",
     "static/js/2.a4d464bb.chunk.js.map": "/mapid-blog-clone/static/js/2.a4d464bb.chunk.js.map",
     "index.html": "/mapid-blog-clone/index.html",
-    "precache-manifest.21ee5e5ae3783f2f041543aaaed524e8.js": "/mapid-blog-clone/precache-manifest.21ee5e5ae3783f2f041543aaaed524e8.js",
+    "precache-manifest.9b07ddd8ed2088c2b9ce81c64ee3cd0f.js": "/mapid-blog-clone/precache-manifest.9b07ddd8ed2088c2b9ce81c64ee3cd0f.js",
     "service-worker.js": "/mapid-blog-clone/service-worker.js",
     "static/css/main.8be22ab2.chunk.css.map": "/mapid-blog-clone/static/css/main.8be22ab2.chunk.css.map",
     "static/js/2.a4d464bb.chunk.js.LICENSE.txt": "/mapid-blog-clone/static/js/2.a4d464bb.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.47933d2f.js",
     "static/js/2.a4d464bb.chunk.js",
     "static/css/main.8be22ab2.chunk.css",
-    "static/js/main.3d9c604a.chunk.js"
+    "static/js/main.65b812f5.chunk.js"
   ]
 }

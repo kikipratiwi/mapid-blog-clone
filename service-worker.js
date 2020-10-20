@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/mapid-blog-clone/precache-manifest.21ee5e5ae3783f2f041543aaaed524e8.js"
+  "/mapid-blog-clone/precache-manifest.9b07ddd8ed2088c2b9ce81c64ee3cd0f.js"
 );
 
 self.addEventListener('message', (event) => {
