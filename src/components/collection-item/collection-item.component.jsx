@@ -19,7 +19,7 @@ const CollectionItem = ({ item, setCurrentBlog, currentBlog }) => {
   return (
     <Link 
       className='button-table-of-content item-table-of-content'
-      to={`/blog/${item.link}`}
+      to={`/mapid-blog-clone/blog/${item.link}`}
       onClick={() => setCurrentBlog(item)}
     >
       <span className={titleWrapperClassNames}>{item.title}</span>
