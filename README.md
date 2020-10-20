@@ -29,3 +29,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 
+### `npm run deploy`
+It will run predeploy and deploy script.<br />
+Open [https://kikipratiwi.github.io/mapid-blog-clone/](https://kikipratiwi.github.io/mapid-blog-clone/) to view deployment mode.
