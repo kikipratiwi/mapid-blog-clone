@@ -16,3 +16,11 @@ body {
   padding-top: 0;
   text-align: left;
 }
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

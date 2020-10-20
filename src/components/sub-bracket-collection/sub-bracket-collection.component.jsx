@@ -21,14 +21,14 @@ const SubBracketCollection = ({ subBracketTitle, items }) => (
   </div>
 );
 
-export const renderTitle = (param) => {
-  switch(param) {
+export const renderTitle = (title) => {
+  switch(title) {
     case 'teknis_kompetisi_mapid':
       return 'Kompetisi MAPID';
     case 'seminar':
       return 'SEMINAR & WORKSHOP';
     default:
-      return param.toUpperCase();
+      return title.replace(/_/g, ' ').toUpperCase();
   };
 }
 

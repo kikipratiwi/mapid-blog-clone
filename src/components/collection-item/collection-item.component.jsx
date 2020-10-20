@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import { selectCurrentBlog } from '../../redux/blog/blog.selectors'
@@ -16,12 +17,13 @@ const CollectionItem = ({ item, setCurrentBlog, currentBlog }) => {
   )
 
   return (
-    <div 
+    <Link 
       className='button-table-of-content item-table-of-content'
+      to={`/blog/${item.link}`}
       onClick={() => setCurrentBlog(item)}
     >
       <span className={titleWrapperClassNames}>{item.title}</span>
-    </div>
+    </Link>
   );
 }
 const mapStateToProps = createStructuredSelector ({
